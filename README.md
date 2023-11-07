@@ -1,2 +1,2 @@
-https://webpack.docschina.org/guides/output-management/
-管理输出
+https://webpack.docschina.org/guides/development/
+development mode
