@@ -1,30 +1,15 @@
 import _ from 'lodash';
-import printMe from './print.js';
+import { cube } from './math.js';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+ function component() {
+  const element = document.createElement('pre');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.innerHTML = [
+    'Hello webpack!',
+    '5 cubed is equal to ' + cube(5)
+  ].join('\n\n');
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-
-  element.appendChild(btn);
-
-  return element;
-}
-
-// document.body.appendChild(component());
-let element = component(); // 存储 element，以在 print.js 修改时重新渲染
-document.body.appendChild(element);
-
- if (module.hot) {
-   module.hot.accept('./print.js', function() {
-     console.log('111111111!');
-    // printMe();
-    document.body.removeChild(element);
-    element = component(); // 重新渲染 "component"，以便更新 click 事件处理函数
-    document.body.appendChild(element);
-   })
+   return element;
  }
+
+ document.body.appendChild(component());
